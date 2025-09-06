@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import { version, description, name } from '../package.json' assert { type: 'json' };
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const pkg = require('../package.json');
 import { initCmd, addStackCmd, doctorCmd, upgradeCmd } from './scaffold.js';
 
 const program = new Command();
 program
-  .name(name)
+  .name(pkg.name || 'create-orch-kit')
   .description('Scaffold nested orchestration kit into any repo (.claude/*)')
-  .version(version);
+  .version(pkg.version || '0.1.0');
 
 program.command('init')
   .argument('[target]', 'target directory', '.')
@@ -26,4 +29,3 @@ program.command('doctor').action(doctorCmd);
 program.command('upgrade').action(upgradeCmd);
 
 program.parse();
-
