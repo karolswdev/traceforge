@@ -1,6 +1,13 @@
 # Traceforge
 
-Traceforge scaffolds production-grade, multi-agent orchestration into any repository and adds AI-assisted SRS and phase planning. It’s built for agentic development with Claude Code, and optionally Codex/Gemini backends per role.
+[![CI](https://github.com/karolswdev/traceforge/actions/workflows/ci.yml/badge.svg)](https://github.com/karolswdev/traceforge/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/traceforge)](https://www.npmjs.com/package/traceforge)
+[![npm downloads](https://img.shields.io/npm/dm/traceforge)](https://www.npmjs.com/package/traceforge)
+[![license](https://img.shields.io/github/license/karolswdev/traceforge)](LICENSE)
+[![node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](#requirements)
+[![stars](https://img.shields.io/github/stars/karolswdev/traceforge?style=social)](https://github.com/karolswdev/traceforge)
+
+Traceforge scaffolds production-grade, multi-agent orchestration into any repository and adds AI‑assisted SRS and phase planning. Built for agentic development with Claude Code, plus optional Codex/Gemini per role.
 
 ## Quick Start
 
@@ -72,6 +79,11 @@ Phase generation options:
 - `--ai` — request AI to propose story tasks
 - Generate Phase: `node dist/index.js gen-phase . --stack golang --ai`
 - Publish: `npm publish --access public`
+
+## Publishing
+
+- npmjs: publish unscoped `traceforge` (see `.github/workflows/release.yml`).
+- GitHub Packages: requires a scope. CI can publish as `@karolswdev/traceforge` — see `PUBLISHING.md`.
 
 ## Why Traceforge
 
