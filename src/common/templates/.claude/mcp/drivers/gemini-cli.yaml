@@ -1,0 +1,5 @@
+command: "gemini"
+args: ["call", "--input-file", "{{ prompt_file }}", "--json"]
+env:
+  GOOGLE_API_KEY: "{{ env.GOOGLE_API_KEY }}"
+

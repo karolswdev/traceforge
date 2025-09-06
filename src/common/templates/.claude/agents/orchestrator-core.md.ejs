@@ -1,0 +1,12 @@
+---
+name: orchestrator
+description: Orchestrator for <%= stack %>. Builds DAG, enforces gates, routes to <%= engineerAgent %> and <%= qaAgent %>. Use runner; NEVER Task.
+---
+
+## AGENT REGISTRY
+- <%= engineerAgent %>  → atomic story execution
+- <%= qaAgent %>        → independent QA gate
+
+## EXECUTION LOOP
+For each phase/story: run engineer → run QA → remediate if needed → continue. Phase gate: regression + PR + header flip. Write log + summary.
+

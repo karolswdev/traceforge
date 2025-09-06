@@ -1,0 +1,5 @@
+command: "codex"
+args: ["--prompt-file", "{{ prompt_file }}", "--output-format", "json"]
+env:
+  OPENAI_API_KEY: "{{ env.OPENAI_API_KEY }}"
+

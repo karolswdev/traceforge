@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      { "matcher": "Task", "hooks": [ { "type": "command", "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/block_task_when_orchestrator.py" } ] }
+    ],
+    "SubagentStop": [
+      { "hooks": [ { "type": "command", "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/on_subagent_stop.py" } ] }
+    ],
+    "UserPromptSubmit": [
+      { "hooks": [ { "type": "command", "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/inject_orchestration_context.py" } ] }
+    ]
+  }
+}
+

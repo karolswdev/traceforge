@@ -1,0 +1,3 @@
+command: "claude"
+args: ["-p", "{{ prompt_file }}", "--output-format", "json"]
+
