@@ -1,9 +1,9 @@
 {
-  "name": "create-orch-kit",
+  "name": "traceforge",
   "version": "0.1.0",
-  "description": "Scaffold nested orchestration for Claude Code (+Codex/Gemini) into any repo",
+  "description": "Traceforge: scaffold nested, multi-agent orchestration for Claude Code (+Codex/Gemini) and generate SRS/phase plans",
   "license": "MIT",
-  "bin": { "create-orch-kit": "dist/index.js" },
+  "bin": { "traceforge": "dist/index.js" },
   "type": "module",
   "main": "dist/index.js",
   "files": ["dist", "README.md", "LICENSE", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md"],
@@ -27,9 +27,9 @@
   "publishConfig": { "access": "public" },
   "repository": {
     "type": "git",
-    "url": "git+https://example.com/your/repo.git"
+    "url": "git+https://github.com/karolswdev/traceforge.git"
   },
-  "bugs": { "url": "https://example.com/your/repo/issues" },
-  "homepage": "https://example.com/your/repo#readme",
-  "keywords": ["orchestration", "claude", "codex", "gemini", "scaffolding", "npx", "cli"]
+  "bugs": { "url": "https://github.com/karolswdev/traceforge/issues" },
+  "homepage": "https://github.com/karolswdev/traceforge#readme",
+  "keywords": ["traceforge", "orchestration", "agents", "claude", "codex", "gemini", "scaffolding", "npx", "cli", "srs"]
 }

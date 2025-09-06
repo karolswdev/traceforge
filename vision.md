@@ -1,9 +1,9 @@
-# create-orch-kit — OSS scaffolder blueprint (npx-ready)
+# Traceforge — OSS scaffolder blueprint (npx-ready)
 
 A shareable **open‑source** project that ships a one‑command scaffolder to drop the orchestration kit into any repository. Users run:
 
 ```bash
-npx create-orch-kit@latest init --stack golang \
+npx traceforge@latest init --stack golang \
   --backend-map orchestrator=claude,engineer=codex,qa=claude \
   --evidence-root ./evidence
 ```
@@ -25,13 +25,13 @@ npx create-orch-kit@latest init --stack golang \
 ## Monorepo layout (single package to start)
 
 ```
-create-orch-kit/
+traceforge/
   README.md
   LICENSE
   package.json
   tsconfig.json
   src/
-    index.ts             # CLI entry
+    index.ts             # CLI entry (traceforge)
     scaffold.ts          # filesystem + templating
     schema.ts            # arg parsing, backend maps
     stacks/
@@ -52,11 +52,11 @@ create-orch-kit/
 
 ```json
 {
-  "name": "create-orch-kit",
+  "name": "traceforge",
   "version": "0.1.0",
   "description": "Scaffold nested orchestration for Claude Code (+Codex/Gemini) into any repo",
   "license": "MIT",
-  "bin": { "create-orch-kit": "dist/index.js" },
+  "bin": { "traceforge": "dist/index.js" },
   "type": "module",
   "main": "dist/index.js",
   "files": ["dist", "README.md", "LICENSE"],
@@ -86,15 +86,15 @@ create-orch-kit/
 ## CLI UX
 
 ```bash
-npx create-orch-kit@latest init [target=.] \
+npx traceforge@latest init [target=.] \
   --stack golang \
   --backend-map orchestrator=claude,engineer=codex,qa=claude \
   --evidence-root ./evidence \
   --force --dry-run
 
-npx create-orch-kit@latest add-stack dotnet
-npx create-orch-kit@latest doctor          # validates hooks, drivers
-npx create-orch-kit@latest upgrade         # reapply templates non-destructively
+npx traceforge@latest add-stack dotnet
+npx traceforge@latest doctor          # validates hooks, drivers
+npx traceforge@latest upgrade         # reapply templates non-destructively
 ```
 
 * `--backend-map` supports any subset; unspecified roles fall back to `backend_preference_order`.
@@ -111,7 +111,7 @@ import { initCmd, addStackCmd, doctorCmd, upgradeCmd } from './scaffold.js';
 
 const program = new Command();
 program
-  .name('create-orch-kit')
+  .name('traceforge')
   .description('Scaffold nested orchestration kit into any repo (.claude/*)')
   .version('0.1.0');
 
@@ -443,13 +443,13 @@ Return JSON { verdict, findings{...}, repairs{traceability}, artifacts[], commit
 ## README.md (package)
 
 ````md
-# create-orch-kit
+# traceforge
 
 Scaffold nested orchestration (Claude Code + optional Codex/Gemini backends) into any repo.
 
 ## Quick start
 ```bash
-npx create-orch-kit@latest init --stack golang \
+npx traceforge@latest init --stack golang \
   --backend-map orchestrator=claude,engineer=codex,qa=claude
 ````
 
@@ -483,7 +483,7 @@ Hooks run with your environment privileges. Review changes and limit exported en
 
 ## Publishing steps
 1) `npm login && npm publish --access public`
-2) Test from a clean repo: `npx create-orch-kit@latest init --stack golang --dry-run`
+2) Test from a clean repo: `npx traceforge@latest init --stack golang --dry-run`
 3) Tag release; draft GitHub Release with changelog highlights
 
 ---

@@ -1,6 +1,6 @@
-# Contributing to create-orch-kit
+# Contributing to Traceforge
 
-Thanks for your interest in contributing! This project aims to provide a robust, npx-ready scaffolder for multi-level orchestration.
+Thanks for your interest in contributing! Traceforge provides a robust, npx-ready scaffolder for multi-level orchestration and requirements/phase generation.
 
 ## Getting Started
 
@@ -32,4 +32,3 @@ Use Conventional Commits (e.g., `feat:`, `fix:`, `docs:`, `chore:`) and commit f
 ## Code of Conduct
 
 Participating in this project means agreeing to our Code of Conduct.
-

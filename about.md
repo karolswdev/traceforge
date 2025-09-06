@@ -49,7 +49,7 @@ We keep the visible contract (orchestrator + subagents), but **redirect nested w
 
 ## 3) What gets scaffolded (files & directories)
 
-The scaffolder (e.g., `npx create-orch-kit`) generates a **drop‑in kit** under `.claude/` plus a starter phase file:
+The scaffolder (e.g., `npx traceforge`) generates a **drop‑in kit** under `.claude/` plus a starter phase file:
 
 ```
 .claude/
@@ -142,7 +142,7 @@ Operational rules:
 
 ```bash
 # Scaffold into current repo with Go stack and per‑role backends
-npx create-orch-kit@latest init \
+npx traceforge@latest init \
   --stack golang \
   --backend-map orchestrator=claude,engineer=codex,qa=claude \
   --evidence-root ./evidence

@@ -1,4 +1,4 @@
-# Templates Preview (MVP)
+# Templates Preview (Traceforge)
 
 The scaffolder materializes the following files relative to the target directory:
 
@@ -13,4 +13,3 @@ The scaffolder materializes the following files relative to the target directory
 - `.pm/phase-<stack>-1.md` — starter phase plan
 
 All templates use EJS placeholders and are rendered with `--stack`, `--backend-map`, and `--evidence-root`.
-

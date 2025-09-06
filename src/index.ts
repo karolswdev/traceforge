@@ -11,7 +11,7 @@ import { OpenAIChat } from './ai/openai.js';
 
 const program = new Command();
 program
-  .name(pkg.name || 'create-orch-kit')
+  .name(pkg.name || 'traceforge')
   .description('Scaffold nested orchestration kit into any repo (.claude/*)')
   .version(pkg.version || '0.1.0');
 
