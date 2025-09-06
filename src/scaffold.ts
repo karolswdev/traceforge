@@ -42,8 +42,10 @@ async function buildPlan(ctx: Ctx): Promise<PlanItem[]> {
   const templateVars = mkTemplateVars(ctx);
   const files = await listAll([common, stackDir]);
   for (const f of files) {
-    const rel = f.abs.replace(common, '.claude').replace(stackDir, '.claude');
-    const out = path.join(ctx.target, rel);
+    const base = f.abs.startsWith(common) ? common : stackDir;
+    const relFromBase = path.relative(base, f.abs);
+    // The template tree encodes the desired target root (e.g., ".claude/..." or ".pm/...")
+    const out = path.join(ctx.target, relFromBase);
     items.push({ outPath: out, mode: 'write', from: f.abs, templateVars });
   }
   return items;
@@ -102,4 +104,3 @@ async function applyPlan(items: PlanItem[], { force }: { force: boolean }) {
     }
   }
 }
-
