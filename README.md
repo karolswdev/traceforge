@@ -12,6 +12,10 @@ npx create-orch-kit@latest init --stack golang \
 
 This generates `.claude/*` agents, hooks, drivers, and a Python runner that spawns child sessions on the selected backends.
 
+## Why
+
+See `about.md` and `vision.md` for the full context: we emulate multi-level orchestration in Claude Code using hooks and a tiny runner, with per-role backend mapping (Claude/Codex/Gemini).
+
 ## Commands
 
 - `init [target]` — scaffold the kit into a repository
@@ -39,4 +43,10 @@ Hooks run with your environment privileges. Review changes in PRs and scope envi
 ## License
 
 MIT
+
+## Development
+
+- Build: `npm run build`
+- Try locally (once built): `node dist/index.js init --stack golang --dry-run`
+- Publish: `npm publish --access public`
 
