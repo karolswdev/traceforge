@@ -100,6 +100,10 @@ async function applyPlan(items: PlanItem[], { force }: { force: boolean }) {
     try { await fs.access(it.outPath); if (!force) { console.log(`skip (exists): ${it.outPath}`); shouldWrite = false; } } catch {}
     if (shouldWrite) {
       await fs.writeFile(it.outPath, out, 'utf8');
+      // Mark scripts executable if they have a shebang
+      if (out.startsWith('#!')) {
+        try { await fs.chmod(it.outPath, 0o755); } catch {}
+      }
       console.log(`write: ${it.outPath}`);
     }
   }
