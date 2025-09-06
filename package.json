@@ -24,6 +24,12 @@
     "typescript": "^5.6.2",
     "vitest": "^2.0.5"
   },
-  "publishConfig": { "access": "public" }
+  "publishConfig": { "access": "public" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://example.com/your/repo.git"
+  },
+  "bugs": { "url": "https://example.com/your/repo/issues" },
+  "homepage": "https://example.com/your/repo#readme",
+  "keywords": ["orchestration", "claude", "codex", "gemini", "scaffolding", "npx", "cli"]
 }
-
