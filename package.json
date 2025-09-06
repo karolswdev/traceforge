@@ -11,7 +11,7 @@
   "scripts": {
     "build": "tsc -p .",
     "dev": "tsx src/index.ts --help",
-    "test": "vitest"
+    "test": "vitest run --reporter dot"
   },
   "dependencies": {
     "commander": "^12.1.0",
