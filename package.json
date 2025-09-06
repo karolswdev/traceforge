@@ -12,7 +12,11 @@
     "build": "tsc -p .",
     "dev": "tsx src/index.ts --help",
     "test": "vitest run --reporter dot",
-    "coverage": "vitest run --coverage --reporter dot"
+    "coverage": "vitest run --coverage --reporter dot",
+    "lint": "eslint . --ext .ts,.js",
+    "lint:fix": "eslint . --ext .ts,.js --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "commander": "^12.1.0",
@@ -24,7 +28,28 @@
     "tsx": "^4.16.2",
     "typescript": "^5.6.2",
     "vitest": "^2.1.9",
-    "@vitest/coverage-v8": "^2.1.9"
+    "@vitest/coverage-v8": "^2.1.9",
+    "eslint": "^9.9.0",
+    "@typescript-eslint/parser": "^8.6.0",
+    "@typescript-eslint/eslint-plugin": "^8.6.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.30.0",
+    "prettier": "^3.3.3",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "lint-staged": {
+    "*.{ts,js,md,json,yml,yaml}": [
+      "prettier --write"
+    ],
+    "src/**/*.{ts,js}": [
+      "eslint --fix"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "publishConfig": { "access": "public" },
   "repository": {

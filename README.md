@@ -1,6 +1,7 @@
 # Traceforge ✨
 
 [![CI](https://github.com/karolswdev/traceforge/actions/workflows/ci.yml/badge.svg)](https://github.com/karolswdev/traceforge/actions/workflows/ci.yml)
+[![Lint](https://img.shields.io/github/actions/workflow/status/karolswdev/traceforge/ci.yml?label=lint&logo=eslint)](https://github.com/karolswdev/traceforge/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/traceforge)](https://www.npmjs.com/package/traceforge)
 [![npm downloads](https://img.shields.io/npm/dm/traceforge)](https://www.npmjs.com/package/traceforge)
 [![codecov](https://codecov.io/gh/karolswdev/traceforge/branch/master/graph/badge.svg)](https://codecov.io/gh/karolswdev/traceforge)
@@ -8,6 +9,9 @@
 [![node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](#requirements)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)](#)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0-ffa500.svg)](https://www.conventionalcommits.org)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![OpenSSF Best Practices](https://img.shields.io/badge/OpenSSF-Best%20Practices-blue)](https://www.bestpractices.dev/projects)
+[![Code Style: Prettier](https://img.shields.io/badge/code_style-Prettier-ff69b4.svg)](https://prettier.io)
 [![Stars](https://img.shields.io/github/stars/karolswdev/traceforge?style=social)](https://github.com/karolswdev/traceforge)
 
 Traceforge scaffolds production‑grade, multi‑agent orchestration into any repository and adds AI‑assisted SRS and phase planning. Built for agentic development with Claude Code, plus optional Codex/Gemini per role.
