@@ -34,6 +34,59 @@ Additionally, it creates `docs/SRS.md` as a starter Software Requirements Specif
 
 Traceforge emulates multi‑level orchestration inside Claude Code using hooks and a tiny runner, then enforces a methodology with engineer/QA cycles, gates, and evidence. Per‑role backend mapping (Claude/Codex/Gemini) lets you pick the best tool for each role without vendor lock‑in.
 
+## Visual Overview 🧩
+
+Limitations of native Claude Code vs. Traceforge’s drop‑in orchestration.
+
+### Native (Single‑Level Delegation)
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant U as User
+  participant B as Base Model
+  participant S as Subagent
+  U->>B: "Do project X"
+  B->>S: "Implement + QA please"
+  Note over B,S: Subagents cannot delegate further
+  S-->>B: Implementation attempt
+  B->>S: "Now run QA"
+  S-->>B: QA attempt (mixed consistency)
+  B-->>U: Result (fragile, manual chaining)
+```
+
+### Traceforge (Orchestrated Multi‑Level Flow)
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant U as User
+  participant B as Base Model
+  participant O as Orchestrator (Traceforge)
+  participant E as Engineer Agent
+  participant Q as QA Agent
+
+  U->>B: "Execute Phase GO-1"
+  B->>O: "Run phase plan"
+  O->>E: STORY 1.1 context + policies
+  E-->>O: status, commit, evidence paths
+  O->>Q: verify tests, coverage, scans
+  Q-->>O: verdict, findings
+  alt RED
+    O->>E: remediation pack (diff, failing tests)
+    E-->>O: fix commit + notes
+    O->>Q: re-verify
+  end
+  O-->>B: Phase summary (GREEN) + evidence
+```
+
+ASCII fallback
+
+```
+Native: User -> Base -> Subagent (no further delegation). QA often chained manually.
+Traceforge: User -> Base -> Orchestrator -> Engineer <-> QA loops -> Base. Deterministic gates + evidence.
+```
+
 ## Commands
 
 - `init [target]` — scaffold the kit into a repository (.claude/*, .pm/*, docs/SRS.md)
