@@ -1,0 +1,49 @@
+# Software Requirements Specification (SRS)
+
+## 1. Introduction
+- Project: Orchestrated Sub‑Orchestration Kit
+- Stack: <%= stack %>
+- Purpose: Define functional and non-functional requirements to support nested orchestration via hooks and a multi‑LLM runner.
+
+## 2. Scope
+- Generate `.claude/*` agents, hooks, drivers, MCP runner
+- Provide `.pm/*` phase plans and `docs/SRS.md`
+- Support per‑role backend selection (Claude/Codex/Gemini)
+
+## 3. References
+- about.md, vision.md in repo
+- `.claude/orch.yaml` (policies, mappings)
+
+## 4. Definitions
+- Orchestrator: Agent coordinating engineer/QA cycles and phase gates
+- Evidence: Artifacts stored under `evidence/`
+- Runner: Tool that spawns child sessions for selected backends
+
+## 5. Overall Description
+- Actors: Orchestrator, Engineer, QA
+- Constraints: single-level native delegation; mitigated by runner + hooks
+- Assumptions: Users have required CLIs/keys for selected backends
+
+## 6. Functional Requirements
+FR-1: The kit MUST scaffold orchestrator, hooks, MCP runner, drivers.
+FR-2: The kit MUST allow per-role backend mapping via `orch.yaml`.
+FR-3: The kit SHOULD log evidence paths for orchestration runs.
+FR-4: The kit SHOULD provide engineer/QA agent prompts for <%= stack %>.
+FR-5: The kit SHOULD include a starter phase plan in `.pm/`.
+
+## 7. Non-Functional Requirements
+NFR-1: Deterministic output paths; idempotent scaffolding with `--force` override.
+NFR-2: Security-first hooks; avoid unsafe commands; reviewable diffs.
+NFR-3: Extensibility: new stacks/backends added via templates/drivers.
+
+## 8. Traceability Matrix (Skeleton)
+| ID | Requirement | Test/Evidence |
+|----|-------------|---------------|
+| FR-1 | Scaffold core kit | Evidence: `.claude/**` exists |
+| FR-4 | Stack agents present | Evidence: `.claude/agents/<%= stack %>-*.md` |
+| FR-5 | Phase plan present | Evidence: `.pm/phase-<%= stack %>-1.md` |
+
+## 9. Acceptance Criteria
+- Running `doctor` reports all checks passed.
+- Generated files are present and executable where applicable.
+

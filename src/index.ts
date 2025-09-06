@@ -22,10 +22,21 @@ program.command('init')
   .action(initCmd);
 
 program.command('add-stack')
+  .argument('[target]', 'target directory', '.')
   .argument('<name>', 'stack name, e.g., dotnet')
-  .action(addStackCmd);
+  .action((target, name) => addStackCmd(target, name));
 
-program.command('doctor').action(doctorCmd);
-program.command('upgrade').action(upgradeCmd);
+program.command('doctor')
+  .argument('[target]', 'target directory', '.')
+  .action((target) => doctorCmd(target));
+
+program.command('upgrade')
+  .argument('[target]', 'target directory', '.')
+  .option('--stack <name>', 'stack to upgrade (reapply)')
+  .option('--backend-map <map>', 'role→backend, e.g. orchestrator=claude,engineer=codex,qa=claude')
+  .option('--evidence-root <path>', 'evidence root path', './evidence')
+  .option('--dry-run', 'print plan only', false)
+  .option('--force', 'overwrite existing files', false)
+  .action((target, opts) => upgradeCmd(target, opts));
 
 program.parse();

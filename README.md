@@ -12,6 +12,8 @@ npx create-orch-kit@latest init --stack golang \
 
 This generates `.claude/*` agents, hooks, drivers, and a Python runner that spawns child sessions on the selected backends.
 
+Additionally, it creates `docs/SRS.md` as a starter Software Requirements Specification to support traceability.
+
 ## Why
 
 See `about.md` and `vision.md` for the full context: we emulate multi-level orchestration in Claude Code using hooks and a tiny runner, with per-role backend mapping (Claude/Codex/Gemini).
@@ -19,9 +21,9 @@ See `about.md` and `vision.md` for the full context: we emulate multi-level orch
 ## Commands
 
 - `init [target]` — scaffold the kit into a repository
-- `add-stack <name>` — add a stack (placeholder in MVP)
-- `doctor` — validate hooks/drivers presence (placeholder in MVP)
-- `upgrade` — reapply templates non-destructively (placeholder in MVP)
+- `add-stack [target] <name>` — add a stack using skeleton templates
+- `doctor [target]` — validate orchestration files/drivers/hooks/agents
+- `upgrade [target]` — reapply common templates and optional `--stack`
 
 ## Options
 
@@ -30,6 +32,10 @@ See `about.md` and `vision.md` for the full context: we emulate multi-level orch
 - `--evidence-root <path>` (default: `./evidence`)
 - `--dry-run` — print the plan only
 - `--force` — overwrite existing files
+
+`upgrade` options:
+- `--stack <name>` — also reapply the named stack templates
+- `--backend-map`, `--evidence-root`, `--dry-run`, `--force`
 
 ## Requirements
 
@@ -48,5 +54,7 @@ MIT
 
 - Build: `npm run build`
 - Try locally (once built): `node dist/index.js init --stack golang --dry-run`
+- Add a stack: `node dist/index.js add-stack . dotnet`
+- Doctor check: `node dist/index.js doctor .`
+- Upgrade: `node dist/index.js upgrade . --stack golang --dry-run`
 - Publish: `npm publish --access public`
-
