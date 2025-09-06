@@ -1,13 +1,22 @@
-# Traceforge
+# Traceforge ✨
 
 [![CI](https://github.com/karolswdev/traceforge/actions/workflows/ci.yml/badge.svg)](https://github.com/karolswdev/traceforge/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/traceforge)](https://www.npmjs.com/package/traceforge)
 [![npm downloads](https://img.shields.io/npm/dm/traceforge)](https://www.npmjs.com/package/traceforge)
+[![codecov](https://codecov.io/gh/karolswdev/traceforge/branch/master/graph/badge.svg)](https://codecov.io/gh/karolswdev/traceforge)
 [![license](https://img.shields.io/github/license/karolswdev/traceforge)](LICENSE)
 [![node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](#requirements)
-[![stars](https://img.shields.io/github/stars/karolswdev/traceforge?style=social)](https://github.com/karolswdev/traceforge)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)](#)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0-ffa500.svg)](https://www.conventionalcommits.org)
+[![Stars](https://img.shields.io/github/stars/karolswdev/traceforge?style=social)](https://github.com/karolswdev/traceforge)
 
-Traceforge scaffolds production-grade, multi-agent orchestration into any repository and adds AI‑assisted SRS and phase planning. Built for agentic development with Claude Code, plus optional Codex/Gemini per role.
+Traceforge scaffolds production‑grade, multi‑agent orchestration into any repository and adds AI‑assisted SRS and phase planning. Built for agentic development with Claude Code, plus optional Codex/Gemini per role.
+
+🚀 Value Proposition (Drop‑in for Claude Code)
+- 🧠 Real multi‑level orchestration via a tiny runner + hooks (overcomes single‑level subagent limits)
+- 🧪 Guardrailed engineer ⇄ QA loops with policy gates, retries, and traceable evidence
+- 🧩 Plug‑in backends per role (Claude/Codex/Gemini) — vendor‑agnostic by design
+- 🗂️ Deterministic outputs: `.claude/*`, `.pm/*`, and `docs/SRS.md` for end‑to‑end traceability
 
 ## Quick Start
 
@@ -21,9 +30,9 @@ This generates `.claude/*` agents, hooks, drivers, and a Python runner that spaw
 
 Additionally, it creates `docs/SRS.md` as a starter Software Requirements Specification to support traceability.
 
-## Why
+## Why 💡
 
-See `about.md` and `vision.md` for the full context: Traceforge emulates multi-level orchestration in Claude Code using hooks and a tiny runner, with per-role backend mapping (Claude/Codex/Gemini).
+Traceforge emulates multi‑level orchestration inside Claude Code using hooks and a tiny runner, then enforces a methodology with engineer/QA cycles, gates, and evidence. Per‑role backend mapping (Claude/Codex/Gemini) lets you pick the best tool for each role without vendor lock‑in.
 
 ## Commands
 
@@ -84,6 +93,21 @@ Phase generation options:
 
 - npmjs: publish unscoped `traceforge` (see `.github/workflows/release.yml`).
 - GitHub Packages: requires a scope. CI can publish as `@karolswdev/traceforge` — see `PUBLISHING.md`.
+
+## How It Works 🛠️
+
+1) 🧭 Orchestrator reads the phase file and policies, builds a DAG of stories.
+2) 🧑‍💻 Engineer implements each story atomically (code → tests → traceability → commit).
+3) 🔍 QA verifies tests, coverage, linters, vuln/secret scans, and traceability; can minimally repair if policy allows.
+4) ♻️ Remediation loop runs (engineer ⇄ QA) within retry limits until GREEN or policy STOP.
+5) 🚦 Phase Gate: run regression, PR/merge, header flip; orchestrator writes log and summary.
+6) 🧾 Evidence: artifacts under `evidence/`, with orchestrator `log.md` and `summary.json`.
+
+Under the hood, hooks block nested Task calls and redirect work to the runner/MCP, which spawns child sessions on the configured backends and returns structured results. You get deterministic behavior and clean audit trails.
+
+## Star History ⭐
+
+[![Star History Chart](https://api.star-history.com/svg?repos=karolswdev/traceforge&type=Date)](https://star-history.com/#karolswdev/traceforge&Date)
 
 ## Why Traceforge
 
